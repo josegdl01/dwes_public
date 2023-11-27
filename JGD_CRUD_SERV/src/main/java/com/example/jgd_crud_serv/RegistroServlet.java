@@ -1,5 +1,9 @@
 package com.example.jgd_crud_serv;
 
+import DAO.UsuarioDAO;
+import DAO.UsuarioDAOImpl;
+import Modelo.UsuarioBean;
+import Utilidades.PassGen;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,6 +13,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.util.Objects;
+
 @WebServlet(value = "/RegistroServlet", name = "RegistroServlet")
 public class RegistroServlet extends HttpServlet {
 
@@ -27,7 +33,29 @@ public class RegistroServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
+        log.info("Realizando Post");
+        String name = req.getParameter("userReg");
+        String email = req.getParameter("emailReg");
+        String password = req.getParameter("pswdReg");
+        if(!Objects.equals(name, "") && !Objects.equals(email, "") && !Objects.equals(password, "")){
+            if(usuarioDAO.getUsuario(req.getParameter("user")) == null){
+                password = PassGen.hashPassword(password);
+                UsuarioBean usuarioBean = new UsuarioBean(name,email,password,"usuario");
+                if(usuarioDAO.addUsuario(usuarioBean)){
+                    log.info("Usuario añadido con éxito");
+                    log.info(name +"\n"+ email +"\n"+ password);
+                } else {
+                    log.error("Error al añadir un usuario");
+                    log.info(name +"\n"+ email +"\n"+ password);
+                }
+            } else {
+                log.error("Este usuario ya existe");
+            }
+        } else {
+            log.error("Se deben rellenar todos los campos");
+        }
+        resp.sendRedirect(req.getContextPath());
     }
 
     @Override

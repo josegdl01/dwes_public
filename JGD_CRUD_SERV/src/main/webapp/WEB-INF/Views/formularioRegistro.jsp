@@ -17,9 +17,9 @@
 <h1><fmt:message key = "regTitleTag"/></h1>
 <br>
 <form method="post">
-    <label for="user"><fmt:message key = "userTag"/></label><input id="user" type="text" name="name"><br><br>
-    <label for="pswd"><fmt:message key = "emailTag"/></label><input id="email" type="password" name="pswd"><br><br>
-    <label for="pswd"><fmt:message key = "pswdTag"/></label><input id="pswd" type="password" name="pswd"><br><br>
+    <label for="userReg"><fmt:message key = "userTag"/></label><input id="userReg" type="text" name="userReg"><br><br>
+    <label for="emailReg"><fmt:message key = "emailTag"/></label><input id="emailReg" type="text" name="emailReg"><br><br>
+    <label for="pswdReg"><fmt:message key = "pswdTag"/></label><input id="pswdReg" type="password" name="pswdReg"><br><br>
     <br><br>
     <button type="submit" name="submit"><fmt:message key = "registerTag"/></button>
 </form>

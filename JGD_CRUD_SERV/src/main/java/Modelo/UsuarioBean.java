@@ -10,11 +10,11 @@ public class UsuarioBean implements Serializable {
 
     public UsuarioBean() {}
 
-    public UsuarioBean(String name, String email, String role, String pass) {
+    public UsuarioBean(String name, String email, String pass, String role) {
         this.name = name;
         this.email = email;
-        this.role = role;
         this.pass = pass;
+        this.role = role;
     }
 
     public String getName() {

@@ -29,7 +29,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
                         resultSet.getString("email"),
                         resultSet.getString("role"));
             }
-            ConnectionBBDD.closeConnection();
         } catch (SQLException s) {
             log.info(s.toString());
         }
@@ -64,7 +63,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             preparedStatement.executeUpdate();
             ConnectionBBDD.closeConnection();
             log.info("Usuario"+ user.getName() +" creado con éxito");
-            ConnectionBBDD.closeConnection();
+            userCorrect = true;
         } catch (SQLException s){
             log.error(s.toString());
         }

@@ -27,7 +27,7 @@ public class ConnectionBBDD {
     private static String pswd = null;
 
     public static Connection getConnection(){
-        if(server == null && port == null && bd == null && user == null && pswd == null ){
+        if(server == null && port == null && user == null && pswd == null ){
             try {
                 Properties properties = new Properties();
                 InputStream inputStream = ConnectionBBDD.class.getClassLoader().getResourceAsStream("bd.properties");
@@ -58,16 +58,21 @@ public class ConnectionBBDD {
                     }
                 }
 
-                String connectionString = "jdbc:mariadb://"+server+":"+port+"/"+bd+"?user="+user+"&password="+pswd;
-                connection = DriverManager.getConnection(connectionString);
-                log.info("CONEXIÓN REALIZADA CON ÉXITO");
 
             } catch (ClassNotFoundException |
                      InstantiationException |
                      IllegalAccessException |
-                     IOException |
-                     SQLException e) {
+                     IOException e) {
                 log.error(e + " HA HABIDO UN FALLO EN EL PROCESO DE CONEXION A LA BASE DE DATOS");
+            }
+            try{
+                if(connection == null || connection.isClosed()){
+                    String connectionString = "jdbc:mariadb://"+server+":"+port+"/"+bd+"?user="+user+"&password="+pswd;
+                    connection = DriverManager.getConnection(connectionString);
+                    log.info("CONEXIÓN REALIZADA CON ÉXITO");
+                }
+            } catch (SQLException s) {
+                log.error(s.toString());
             }
         }
 
@@ -78,7 +83,6 @@ public class ConnectionBBDD {
         if(connection != null){
             try{
                 connection.close();
-                connection = null;
                 log.info("CONEXIÓN CERRADA CON ÉXITO");
             } catch(SQLException s) {
                 log.error("ERROR AL CERRAR LA CONEXIÓN A LA BBDD");
