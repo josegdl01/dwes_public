@@ -38,7 +38,7 @@ public class RegistroServlet extends HttpServlet {
         String name = req.getParameter("userReg");
         String email = req.getParameter("emailReg");
         String password = req.getParameter("pswdReg");
-        if(!Objects.equals(name, "") && !Objects.equals(email, "") && !Objects.equals(password, "")){
+        if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
             if(usuarioDAO.getUsuario(req.getParameter("user")) == null){
                 password = PassGen.hashPassword(password);
                 UsuarioBean usuarioBean = new UsuarioBean(name,email,password,"usuario");
