@@ -9,9 +9,9 @@
 <body>
 <br/>
 <h1>Seleccione una opción</h1>
-<h2><a href="${pageContext.request.contextPath}/InsertServlet">Insertar cliente</a></h2>
-<h2><a href="${pageContext.request.contextPath}/ReadServlet">Leer cliente</a></h2>
-<h2><a href="${pageContext.request.contextPath}/DeleteServlet">Borrar cliente</a></h2>
-<h2><a href="${pageContext.request.contextPath}/UpdateServlet">Modificar cliente</a></h2>
+<h2><a href="${pageContext.request.contextPath}/Menu/Insert">Insertar cliente</a></h2>
+<h2><a href="${pageContext.request.contextPath}/Menu/Read">Leer cliente</a></h2>
+<h2><a href="${pageContext.request.contextPath}/Menu/Delete">Borrar cliente</a></h2>
+<h2><a href="${pageContext.request.contextPath}/Menu/Update">Modificar cliente</a></h2>
 </body>
 </html>

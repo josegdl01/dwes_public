@@ -17,7 +17,7 @@
     <form method="POST">
         <label for="CustomerId">Customer's ID:</label><input id="CustomerId" type="text" name="CustomerId"><br>
             <button type="submit" name="submit">Enviar</button>
-            <br><p><a href="${pageContext.request.contextPath}/MenuServlet">Volver al menú</a></p>
+            <br><p><a href="${pageContext.request.contextPath}/Menu/">Volver al menú</a></p>
     </form>
 </body>
 </html>

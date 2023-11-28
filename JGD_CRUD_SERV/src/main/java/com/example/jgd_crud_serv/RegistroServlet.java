@@ -41,10 +41,10 @@ public class RegistroServlet extends HttpServlet {
         if(!name.isEmpty() && !email.isEmpty() && !password.isEmpty()){
             if(usuarioDAO.getUsuario(req.getParameter("user")) == null){
                 password = PassGen.hashPassword(password);
-                UsuarioBean usuarioBean = new UsuarioBean(name,email,password,"usuario");
+                UsuarioBean usuarioBean = new UsuarioBean(name,email,password,"admin");
                 if(usuarioDAO.addUsuario(usuarioBean)){
                     log.info("Usuario añadido con éxito");
-                    log.info(name +"\n"+ email +"\n"+ password);
+                    log.info(name +"\n"+ email +"\n"+ password+"\n"+usuarioDAO.getUsuario(name).getRole());
                 } else {
                     log.error("Error al añadir un usuario");
                     log.info(name +"\n"+ email +"\n"+ password);

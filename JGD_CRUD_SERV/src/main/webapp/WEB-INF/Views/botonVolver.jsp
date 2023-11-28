@@ -13,6 +13,6 @@
 </head>
 <body>
 <button><a href="${pageContext.request.contextPath}/LogoutServlet">SALIR</a></button>
-<button><a href="${pageContext.request.contextPath}/MenuServlet">VOLVER AL MENÚ</a></button>
+<button><a href="${pageContext.request.contextPath}/Menu/">VOLVER AL MENÚ</a></button>
 </body>
 </html>

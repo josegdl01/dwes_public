@@ -1,5 +1,9 @@
 package com.example.jgd_crud_serv;
 
+import DAO.UsuarioDAO;
+import DAO.UsuarioDAOImpl;
+import Modelo.UsuarioBean;
+import Utilidades.PassGen;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -31,20 +35,24 @@ public class MainServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Realizando POST");
-        if(req.getParameter("name").equals("root") && req.getParameter("pswd").equals("XXXXX")){
-            log.info("Iniciada sesión de admin");
-            HttpSession session = req.getSession();
-            session.setAttribute("sesionCorrecta", true);
-            String momentoInicio = LocalDateTime.now().getHour() +" : "+ LocalDateTime.now().getMinute() +" del " +LocalDateTime.now().getDayOfMonth() +" de "+ LocalDateTime.now().getMonth();
-            session.setAttribute("momentoInicio", momentoInicio);
-            resp.sendRedirect(req.getContextPath() + "/MenuServlet");
+        UsuarioDAO userDAO = new UsuarioDAOImpl();
+        String name = req.getParameter("name");
+        UsuarioBean user = userDAO.getUsuario(name);
+        String pass = req.getParameter("pswd");
+        if(user != null){
+            log.info(user.toString());
+            if(PassGen.checkPassword(pass, user.getPass())){
+                HttpSession session = req.getSession();
+                session.setAttribute("user",userDAO.getUsuario(req.getParameter("name")));
+                resp.sendRedirect(req.getContextPath() + "/Menu/");
+            } else {
+                log.error("Contraseña incorrecta.");
+                resp.sendRedirect(req.getContextPath());
+
+            }
         } else {
-            log.info("Iniciada sesión de usuario");
-            HttpSession session = req.getSession();
-            session.setAttribute("sesionCorrecta", false);
-            String momentoInicio = LocalDateTime.now().getHour() +" : "+ LocalDateTime.now().getMinute() +" del " +LocalDateTime.now().getDayOfMonth() +" de "+ LocalDateTime.now().getMonth();
-            session.setAttribute("momentoInicio", momentoInicio);
-            resp.sendRedirect(req.getContextPath() + "/MenuServlet");
+            log.error("Este usuario no se encuentra en la base de datos.");
+            resp.sendRedirect(req.getContextPath());
         }
 
     }

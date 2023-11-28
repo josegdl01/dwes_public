@@ -1,5 +1,6 @@
 package com.example.jgd_crud_serv;
 
+import DAO.CustomerDAO;
 import DAO.CustomerDAOImpl;
 import Modelo.CustomerBean;
 import jakarta.servlet.ServletException;
@@ -10,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-@WebServlet(value = "/InsertServlet", name = "InsertServlet")
+
 public class InsertServlet extends HttpServlet {
 
     final static Logger log = LoggerFactory.getLogger(InsertServlet.class);
@@ -28,17 +29,23 @@ public class InsertServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         log.info("Realizando GET");
         HttpSession session = req.getSession();
+        CustomerDAO cusDAO = new CustomerDAOImpl();
+        CustomerBean customerInsert = cusDAO.getCustomer(Integer.parseInt(req.getParameter("CustomerId")));
+        if(customerInsert == null){
+            customerInsert.setCusId(Integer.parseInt(req.getParameter("CustomerId")));
+            customerInsert.setCusTaxCode(req.getParameter("CustomerTaxCode"));
+            customerInsert.setCusBusName(req.getParameter("CustomerBusName"));
+            customerInsert.setCusAddress(req.getParameter("CustomerAddress"));
+            customerInsert.setCusPhone(req.getParameter("CustomerPhone"));
+            session.setAttribute("customerInsert", customerInsert);
+            log.info(session.getAttribute("customerInsert").toString());
+            req.getRequestDispatcher("/WEB-INF/Views/customerInserted.jsp").forward(req, resp);
+            customerDAO.addCustomer(customerInsert);
+        } else {
+            log.error("Este cliente ya se halla en la base de datos");
+            req.getRequestDispatcher("/WEB-INF/Views/customerInserted.jsp").forward(req, resp);
+        }
 
-        CustomerBean customerInsert = new CustomerBean();
-        customerInsert.setCusId(Integer.parseInt(req.getParameter("CustomerId")));
-        customerInsert.setCusTaxCode(req.getParameter("CustomerTaxCode"));
-        customerInsert.setCusBusName(req.getParameter("CustomerBusName"));
-        customerInsert.setCusAddress(req.getParameter("CustomerAddress"));
-        customerInsert.setCusPhone(req.getParameter("CustomerPhone"));
-        session.setAttribute("customerInsert", customerInsert);
-        log.info(session.getAttribute("customerInsert").toString());
-        req.getRequestDispatcher("/WEB-INF/Views/customerInserted.jsp").forward(req, resp);
-        customerDAO.addCustomer(customerInsert);
 
     }
 

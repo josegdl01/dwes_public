@@ -1,6 +1,8 @@
 package com.example.jgd_crud_serv;
 
+import DAO.CustomerDAO;
 import DAO.CustomerDAOImpl;
+import Modelo.CustomerBean;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,23 +15,28 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 
-@WebServlet(value = "/DeleteServlet", name="DeleteServlet")
+
 public class DeleteServlet extends HttpServlet {
 
     final static Logger log = LoggerFactory.getLogger(DeleteServlet.class);
-    CustomerDAOImpl customerDAO = new CustomerDAOImpl();
     public void init(){}
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         log.info("Realizando GET");
-        req.getRequestDispatcher("WEB-INF/Views/delete.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/Views/delete.jsp").forward(req, resp);
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         HttpSession session = req.getSession();
-        session.setAttribute("clienteBorrado", req.getParameter("customerId"));
-        req.getRequestDispatcher("/WEB-INF/Views/customerDeleted.jsp").forward(req, resp);
-        customerDAO.deleteCustomer(Integer.parseInt(req.getParameter("customerId")));
+        CustomerDAO customerDAO = new CustomerDAOImpl();
+        CustomerBean customerBean = customerDAO.getCustomer(Integer.parseInt(req.getParameter("customerId")));
+        if(customerDAO.getCustomer(Integer.parseInt(req.getParameter("customerId"))) != null){
+            session.setAttribute("clienteBorrado", req.getParameter("customerId"));
+            customerDAO.deleteCustomer(Integer.parseInt(req.getParameter("customerId")));
+            req.getRequestDispatcher("/WEB-INF/Views/customerDeleted.jsp").forward(req, resp);
+        } else {
+            req.getRequestDispatcher("/WEB-INF/Views/customerDeleted.jsp").forward(req, resp);
+        }
     }
 
     public void destroy(){

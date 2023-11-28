@@ -4,12 +4,57 @@
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
     <servlet>
-        <servlet-name>MainServlet</servlet-name>
+        <servlet-name>Main</servlet-name>
         <servlet-class>com.example.jgd_crud_serv.MainServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>MainServlet</servlet-name>
+        <servlet-name>Main</servlet-name>
         <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Menu</servlet-name>
+        <servlet-class>com.example.jgd_crud_serv.MenuServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Menu</servlet-name>
+        <url-pattern>/Menu/</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Read</servlet-name>
+        <servlet-class>com.example.jgd_crud_serv.ReadServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Read</servlet-name>
+        <url-pattern>/Menu/Read</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Delete</servlet-name>
+        <servlet-class>com.example.jgd_crud_serv.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Delete</servlet-name>
+        <url-pattern>/Menu/Delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Insert</servlet-name>
+        <servlet-class>com.example.jgd_crud_serv.InsertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Insert</servlet-name>
+        <url-pattern>/Menu/Insert</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Update</servlet-name>
+        <servlet-class>com.example.jgd_crud_serv.UpdateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/Menu/Update</url-pattern>
     </servlet-mapping>
 
     <session-config>

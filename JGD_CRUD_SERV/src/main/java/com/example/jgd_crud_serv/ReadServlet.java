@@ -11,7 +11,6 @@ import jakarta.servlet.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-@WebServlet(value = "/ReadServlet", name = "ReadServlet")
 public class ReadServlet extends HttpServlet {
 
     final static Logger log = LoggerFactory.getLogger(ReadServlet.class);
@@ -22,7 +21,7 @@ public class ReadServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         log.info("Realizando GET");
-        req.getRequestDispatcher("WEB-INF/Views/read.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/Views/read.jsp").forward(req, resp);
 
     }
 

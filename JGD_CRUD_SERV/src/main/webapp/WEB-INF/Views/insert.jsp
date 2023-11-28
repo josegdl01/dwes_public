@@ -22,6 +22,6 @@
         <label for="CustomerPhone">Customer's Phone:</label><input id="CustomerPhone" type="text" name="CustomerPhone"><br>
         <button type="submit" name="submit">Enviar</button>
     </form>
-    <br><p><a href="${pageContext.request.contextPath}/MenuServlet">Volver al menú</a></p>
+    <br><p><a href="${pageContext.request.contextPath}/Menu/">Volver al menú</a></p>
 </body>
 </html>

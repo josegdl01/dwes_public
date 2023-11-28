@@ -1,5 +1,8 @@
 package Filtro;
 
+import DAO.UsuarioDAO;
+import DAO.UsuarioDAOImpl;
+import Modelo.UsuarioBean;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,15 +23,11 @@ public class FilterUser implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         HttpSession session = req.getSession();
-        if (!session.isNew() && session.getAttribute("sesionCorrecta") != null && (boolean) session.getAttribute("sesionCorrecta") && session.getAttribute("momentoInicio") != null) {
-            log.info("Iniciada sesión de admin\n" + session.getAttribute("sesionCorrecta") + "\n" + session.getAttribute("momentoInicio"));
-            filterChain.doFilter(req, resp);
-        } else if (!session.isNew() && session.getAttribute("sesionCorrecta") != null && !(boolean) session.getAttribute("sesionCorrecta") && session.getAttribute("momentoInicio") != null) {
-            log.info("Iniciada sesión de usuario\n" + session.getAttribute("sesionCorrecta") + "\n" + session.getAttribute("momentoInicio"));
+        UsuarioBean user = (UsuarioBean) session.getAttribute("user");
+        if(!session.isNew() &&  user != null){
             filterChain.doFilter(req, resp);
         } else {
-            log.error("Sesión recibida incorrecta");
-            resp.sendRedirect(req.getContextPath());
+            log.error("No se ha iniciado sesión correctamente");
         }
     }
 }

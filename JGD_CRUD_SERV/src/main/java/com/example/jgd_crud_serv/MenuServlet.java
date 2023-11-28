@@ -10,7 +10,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-@WebServlet(value = "/MenuServlet", name = "MenuServlet")
 public class MenuServlet extends HttpServlet {
     final static Logger log = LoggerFactory.getLogger(MenuServlet.class);
 

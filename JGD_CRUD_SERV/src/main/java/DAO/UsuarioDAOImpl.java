@@ -25,14 +25,19 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 usuario = new UsuarioBean(resultSet.getString("username"),
-                        resultSet.getString("pswd"),
                         resultSet.getString("email"),
+                        resultSet.getString("pswd"),
                         resultSet.getString("role"));
             }
         } catch (SQLException s) {
             log.info(s.toString());
         }
         return usuario;
+    }
+
+    @Override
+    public void makeAdmin(UsuarioBean usuario) {
+        usuario.setRole("admin");
     }
 
     @Override
@@ -61,7 +66,6 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             preparedStatement.setString(3,user.getEmail());
             preparedStatement.setString(4,"user");
             preparedStatement.executeUpdate();
-            ConnectionBBDD.closeConnection();
             log.info("Usuario"+ user.getName() +" creado con éxito");
             userCorrect = true;
         } catch (SQLException s){

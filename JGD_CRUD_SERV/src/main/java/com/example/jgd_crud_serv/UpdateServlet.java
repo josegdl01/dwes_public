@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-@WebServlet(value = "/UpdateServlet", name = "UpdateServlet")
 public class UpdateServlet extends HttpServlet {
 
     final static Logger log = LoggerFactory.getLogger(UpdateServlet.class);
@@ -22,7 +21,7 @@ public class UpdateServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         log.info("Realizando GET");
-        req.getRequestDispatcher("WEB-INF/Views/update.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/Views/update.jsp").forward(req, resp);
 
     }
 
