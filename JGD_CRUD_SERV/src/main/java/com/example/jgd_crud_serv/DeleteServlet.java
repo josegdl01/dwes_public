@@ -29,10 +29,9 @@ public class DeleteServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         HttpSession session = req.getSession();
         CustomerDAO customerDAO = new CustomerDAOImpl();
-        CustomerBean customerBean = customerDAO.getCustomer(Integer.parseInt(req.getParameter("customerId")));
         if(customerDAO.getCustomer(Integer.parseInt(req.getParameter("customerId"))) != null){
-            session.setAttribute("clienteBorrado", req.getParameter("customerId"));
             customerDAO.deleteCustomer(Integer.parseInt(req.getParameter("customerId")));
+            session.setAttribute("clienteBorrado", req.getParameter("customerId"));
             req.getRequestDispatcher("/WEB-INF/Views/customerDeleted.jsp").forward(req, resp);
         } else {
             req.getRequestDispatcher("/WEB-INF/Views/customerDeleted.jsp").forward(req, resp);

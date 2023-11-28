@@ -3,6 +3,7 @@ package com.example.jgd_crud_serv;
 
 import java.io.*;
 
+import DAO.CustomerDAO;
 import DAO.CustomerDAOImpl;
 import Modelo.CustomerBean;
 import jakarta.servlet.ServletException;
@@ -28,13 +29,16 @@ public class ReadServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         log.info("Realizando POST");
         HttpSession session = req.getSession();
+        CustomerBean customerRead = customerDAO.getCustomer(Integer.parseInt(req.getParameter("CustomerId")));
+        if(customerRead != null){
+            session.setAttribute("customerSelected", customerRead);
+            req.getRequestDispatcher("/WEB-INF/Views/customerSelected.jsp").forward(req, resp);
+        } else {
+            session.setAttribute("customerSelected", customerRead);
+            req.getRequestDispatcher("/WEB-INF/Views/customerSelected.jsp").forward(req, resp);
+        }
 
-        int id = Integer.parseInt(req.getParameter("CustomerId"));
-        CustomerBean customerRead = customerDAO.getCustomer(id);
 
-        session.setAttribute("customerRead", customerRead);
-
-        req.getRequestDispatcher("/WEB-INF/Views/customerSelected.jsp").forward(req, resp);
 
     }
 }

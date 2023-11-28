@@ -32,11 +32,11 @@ public class InsertServlet extends HttpServlet {
         CustomerDAO cusDAO = new CustomerDAOImpl();
         CustomerBean customerInsert = cusDAO.getCustomer(Integer.parseInt(req.getParameter("CustomerId")));
         if(customerInsert == null){
-            customerInsert.setCusId(Integer.parseInt(req.getParameter("CustomerId")));
-            customerInsert.setCusTaxCode(req.getParameter("CustomerTaxCode"));
-            customerInsert.setCusBusName(req.getParameter("CustomerBusName"));
-            customerInsert.setCusAddress(req.getParameter("CustomerAddress"));
-            customerInsert.setCusPhone(req.getParameter("CustomerPhone"));
+            customerInsert = new CustomerBean(Integer.parseInt(req.getParameter("CustomerId")),
+                    req.getParameter("CustomerTaxCode"),
+                    req.getParameter("CustomerBusName"),
+                    req.getParameter("CustomerAddress"),
+                    req.getParameter("CustomerPhone"));
             session.setAttribute("customerInsert", customerInsert);
             log.info(session.getAttribute("customerInsert").toString());
             req.getRequestDispatcher("/WEB-INF/Views/customerInserted.jsp").forward(req, resp);
@@ -45,8 +45,6 @@ public class InsertServlet extends HttpServlet {
             log.error("Este cliente ya se halla en la base de datos");
             req.getRequestDispatcher("/WEB-INF/Views/customerInserted.jsp").forward(req, resp);
         }
-
-
     }
 
     public void destroy() {

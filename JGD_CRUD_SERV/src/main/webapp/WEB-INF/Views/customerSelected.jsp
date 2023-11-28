@@ -15,11 +15,11 @@
 </head>
 <body>
 <c:if test="${sessionScope.customerSelected != null}">
-    <h1>Cliente seleccionado: <c:out value="${customerRead.cusId}"/> </h1>
-    <h2>Customer´s Tax Code: <c:out value="${customerRead.cusTaxCode}"/></h2>
-    <h2>Customer´s Bus Name: <c:out value="${customerRead.cusBusName}"/> </h2>
-    <h2>Customer´s Address: <c:out value="${customerRead.cusAddress}"/> </h2>
-    <h2>Customer´s Phone: <c:out value="${customerRead.cusPhone}"/> </h2>
+    <h1>Cliente seleccionado: <c:out value="${customerSelected.cusId}"/> </h1>
+    <h2>Customer´s Tax Code: <c:out value="${customerSelected.cusTaxCode}"/></h2>
+    <h2>Customer´s Bus Name: <c:out value="${customerSelected.cusBusName}"/> </h2>
+    <h2>Customer´s Address: <c:out value="${customerSelected.cusAddress}"/> </h2>
+    <h2>Customer´s Phone: <c:out value="${customerSelected.cusPhone}"/> </h2>
 </c:if>
 <c:if test="${sessionScope.customerSelected == null}">
     <h1>El cliente no se encuentra en la base de datos</h1>
