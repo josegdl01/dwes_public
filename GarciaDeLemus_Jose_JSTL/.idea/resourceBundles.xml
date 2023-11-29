@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ResourceBundleManager">
+    <file url="file://$PROJECT_DIR$/src/main/resources/interface_en.properties" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/interface_es.properties" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/interface_pt.properties" />
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/src/main/resources/interface_en.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/resources/interface_es.properties" />
+      <file value="file://$PROJECT_DIR$/src/main/resources/interface_pt.properties" />
+      <base-name>interface</base-name>
+    </custom-resource-bundle>
+  </component>
+</project>
