@@ -21,17 +21,17 @@
     </h2>
     <h2>Customer's Tax Code:I ${customerInsert.cusTaxCode}
     </h2>
-    <h2>Customer's Bus Name: ${customerInsert.cusBusName}"
+    <h2>Customer's Bus Name: ${customerInsert.cusBusName}
     </h2>
-    <h2>Customer's Address: ${customerInsert.cusAddress}"
+    <h2>Customer's Address: ${customerInsert.cusAddress}
     </h2>
-    <h2>Customer's Phone: ${customerInsert.cusPhone}"
+    <h2>Customer's Phone: ${customerInsert.cusPhone}
     </h2>
 </c:if>
 <c:if test="${sessionScope.customerInsert == null}">
     <h1>Este usuario ya se haya en la base de datos</h1>
 </c:if>
 <br>
-<p><a href="${pageContext.request.contextPath}/Menu/">Volver al menú</a></p>
+<p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
 </body>
 </html>

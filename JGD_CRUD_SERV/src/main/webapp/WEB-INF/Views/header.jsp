@@ -15,18 +15,18 @@
 <body>
 <header>
     <nav>
-        <a href="${pageContext.request.contextPath}/VolverServlet">Volver</a>
+        <a href="${pageContext.request.contextPath}/Menu">Volver</a>
         <a href="${pageContext.request.contextPath}/LogoutServlet">Salir</a>
         <br>
-        <c:if test="${sessionScope.sesionCorrecta != null && sessionScope.sesionCorrecta && sessionScope.momentoInicio != null}">
+        <c:if test="${user != null && user.getRole().equals('user')}">
             <p>
-                Sesion de administrador iniciada a las ${sessionScope.momentoInicio}
+                Sesion de administrador iniciada por ${user.getName()}
             </p>
         </c:if>
 
-        <c:if test="${sessionScope.sesionCorrecta != null && !sessionScope.sesionCorrecta && sessionScope.momentoInicio != null}">
+        <c:if test="${user != null && user.getRole().equals('admin')}">
             <p>
-                Sesion de usuario iniciada a las ${sessionScope.momentoInicio}
+                Sesion de usuario iniciada por ${user.getName()}
             </p>
         </c:if>
     </nav>

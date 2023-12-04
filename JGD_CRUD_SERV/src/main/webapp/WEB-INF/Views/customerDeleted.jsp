@@ -20,6 +20,6 @@
 <c:if test="${sessionScope.clienteBorrado == null}">
     <h1>Este cliente no existe</h1>
 </c:if>
-    <br><a href="${pageContext.request.contextPath}/Menu/">Volver al menú</a>
+    <br><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a>
 </body>
 </html>

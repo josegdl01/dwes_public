@@ -1,6 +1,6 @@
 package DAO;
 
-import BBDD.ConnectionBBDD;
+import BBDD.PoolDB;
 import Modelo.CustomerBean;
 
 import org.mariadb.jdbc.internal.logging.Logger;
@@ -15,10 +15,11 @@ import java.util.ArrayList;
 
 public class CustomerDAOImpl implements CustomerDAO{
     final static Logger log = LoggerFactory.getLogger(CustomerDAO.class);
-    private final Connection connection;
+
+    PoolDB pool;
 
     public CustomerDAOImpl() {
-        this.connection = ConnectionBBDD.getConnection();
+        pool = new PoolDB();
     }
 
     @Override
@@ -26,7 +27,7 @@ public class CustomerDAOImpl implements CustomerDAO{
         CustomerBean customerBean;
         try{
             String query = "SELECT * FROM customer WHERE cus_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = pool.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, cusId);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -50,7 +51,7 @@ public class CustomerDAOImpl implements CustomerDAO{
         ArrayList<CustomerBean> customerBeans = new ArrayList<>();
         try{
             String query = "SELECT * FROM customer";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = pool.getConnection().prepareStatement(query);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 customerBean = new CustomerBean(resultSet.getInt(1),
@@ -72,7 +73,7 @@ public class CustomerDAOImpl implements CustomerDAO{
    public void addCustomer(CustomerBean customerBean){
         try{
             String query = "INSERT INTO customer(cus_id, cus_taxcode,cus_bus_name,cus_address,cus_phone) VALUES (?,?,?,?,?)";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = pool.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, customerBean.getCusId());
             preparedStatement.setString(2, customerBean.getCusTaxCode());
             preparedStatement.setString(3, customerBean.getCusBusName());
@@ -88,7 +89,7 @@ public class CustomerDAOImpl implements CustomerDAO{
    public void deleteCustomer(int id){
         try {
             String query = "DELETE FROM customer WHERE cus_id = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            PreparedStatement preparedStatement = pool.getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
             log.info("ELIMINACIÓN DEL CLIENTE " +id+ " REALIZADA CON ÉXITO");
@@ -100,7 +101,7 @@ public class CustomerDAOImpl implements CustomerDAO{
     public void editCustomer(CustomerBean customerBean) {
         try{
             //String query = ";
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE customer SET cus_taxcode = ?,cus_bus_name = ?,cus_address = ?,cus_phone=? WHERE cus_id=?");
+            PreparedStatement preparedStatement = pool.getConnection().prepareStatement("UPDATE customer SET cus_taxcode = ?,cus_bus_name = ?,cus_address = ?,cus_phone=? WHERE cus_id=?");
             preparedStatement.setString(1, customerBean.getCusTaxCode());
             preparedStatement.setString(2, customerBean.getCusBusName());
             preparedStatement.setString(3, customerBean.getCusAddress());

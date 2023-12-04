@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-@WebFilter(servletNames = {"ReadServlet", "MenuServlet", "VolverServlet"})
+@WebFilter(servletNames = {"Read", "Menu", "Volver", "AreaUsuario", "CambiarCon", "CambiarNom", "CambiarEmail"})
 public class FilterUser implements Filter {
 
     final static Logger log = LoggerFactory.getLogger(FilterUser.class);
@@ -28,6 +28,7 @@ public class FilterUser implements Filter {
             filterChain.doFilter(req, resp);
         } else {
             log.error("No se ha iniciado sesión correctamente");
+            resp.sendRedirect(req.getContextPath());
         }
     }
 }

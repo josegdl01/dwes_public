@@ -28,7 +28,7 @@ public class FilterAdmin implements jakarta.servlet.Filter {
             filterChain.doFilter(req, resp);
         } else {
             log.error("No tienes privilegios de administrador");
-            resp.sendRedirect(req.getContextPath() + "/Menu/");
+            resp.sendRedirect(req.getContextPath() + "/Menu");
         }
     }
 }

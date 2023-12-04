@@ -24,6 +24,6 @@
 <c:if test="${sessionScope.customerSelected == null}">
     <h1>El cliente no se encuentra en la base de datos</h1>
 </c:if>
-    <br><p><a href="${pageContext.request.contextPath}/Menu/">Volver al menú</a></p>
+    <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
 </body>
 </html>

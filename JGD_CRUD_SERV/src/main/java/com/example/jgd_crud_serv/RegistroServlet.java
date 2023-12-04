@@ -44,7 +44,7 @@ public class RegistroServlet extends HttpServlet {
                 UsuarioBean usuarioBean = new UsuarioBean(name,email,password,"admin");
                 if(usuarioDAO.addUsuario(usuarioBean)){
                     log.info("Usuario añadido con éxito");
-                    log.info(name +"\n"+ email +"\n"+ password+"\n"+usuarioDAO.getUsuario(name).getRole());
+                    log.info(name +"\n"+ email +"\n"+ password);
                 } else {
                     log.error("Error al añadir un usuario");
                     log.info(name +"\n"+ email +"\n"+ password);

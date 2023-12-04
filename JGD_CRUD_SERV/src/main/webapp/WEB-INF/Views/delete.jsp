@@ -18,6 +18,6 @@
         <label for="customerId">Customer's ID</label><input id="customerId" type="text" name="customerId"><br>
         <button type="submit" name="submit">Borrar</button>
     </form>
-    <br><p><a href="${pageContext.request.contextPath}/Menu/">Volver al menú</a></p>
+    <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
 </body>
 </html>

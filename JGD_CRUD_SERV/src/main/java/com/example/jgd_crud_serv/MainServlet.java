@@ -44,7 +44,7 @@ public class MainServlet extends HttpServlet {
             if(PassGen.checkPassword(pass, user.getPass())){
                 HttpSession session = req.getSession();
                 session.setAttribute("user",userDAO.getUsuario(req.getParameter("name")));
-                resp.sendRedirect(req.getContextPath() + "/Menu/");
+                resp.sendRedirect(req.getContextPath() + "/Menu");
             } else {
                 log.error("Contraseña incorrecta.");
                 resp.sendRedirect(req.getContextPath());

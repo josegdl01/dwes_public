@@ -19,6 +19,6 @@
     <h2>Customer's Bus Name: ${customerUpdated.cusBusName} </h2>
     <h2>Customer's Address: ${customerUpdated.cusAddress} </h2>
     <h2>Customer's Phone: ${customerUpdated.cusPhone} </h2>
-    <br><p><a href="${pageContext.request.contextPath}/Menu/">Volver al menú</a></p>
+    <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
 </body>
 </html>
