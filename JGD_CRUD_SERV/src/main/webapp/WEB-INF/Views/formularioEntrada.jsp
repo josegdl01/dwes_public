@@ -11,17 +11,22 @@
 <html>
 <head>
     <title>Index del proyecto con un login</title>
+    <jsp:include page="include/bootstrap.jsp"/>
 </head>
 
 <body>
-<h1><fmt:message key ="entradaTag"/></h1>
-<br>
-<form method="post">
-    <label for="name"><fmt:message key = "userTag"/></label><input id="name" type="text" name="name"><br><br>
-    <label for="pswd"><fmt:message key = "pswdTag"/></label><input id="pswd" type="password" name="pswd"><br><br>
-    <a href="${pageContext.request.contextPath}/RegistroServlet"><fmt:message key="linkRegTag"/></a>
-    <br><br>
-    <button type="submit" name="submit"><fmt:message key = "enterTag"/></button>
-</form>
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <h1><fmt:message key ="entradaTag"/></h1>
+        <form method="post">
+            <label for="name" class="form-label"><fmt:message key = "userTag"/></label><input id="name" type="text" name="name" class="form-control"><br><br>
+            <label for="pswd" class="form-label"><fmt:message key = "pswdTag"/></label><input id="pswd" type="password" name="pswd" class="form-control"><br><br>
+            <a href="${pageContext.request.contextPath}/RegistroServlet"><fmt:message key="linkRegTag"/></a>
+            <br><br>
+            <button type="submit" name="submit" class="btn btn-primary w-100 mt-3"><fmt:message key = "enterTag"/></button>
+        </form>
+    </div>
+</div>
+
 </body>
 </html>

@@ -39,6 +39,8 @@ public class CambiarEmailServlet  extends HttpServlet {
         if (!req.getParameter("newEmail").isEmpty()) {
             if (usuarioDAO.modEmail(user.getEmail(), req.getParameter("newEmail"))) {
                 log.info("Cambio de email realizado con éxito");
+                ((UsuarioBean) session.getAttribute("user")).setEmail(req.getParameter("newEmail"));
+                log.info("Cambio de email cambiado con éxito");
                 resp.sendRedirect(req.getContextPath() + "/AreaUsuario");
             } else {
                 log.error("Ha habido un error cambiando el email");

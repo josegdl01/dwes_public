@@ -11,13 +11,19 @@
 <head>
     <title>Entrada de un id para realizar una consulta SELECT a la base de datos</title>
     <meta charset="UTF-8">
+    <jsp:include page="include/bootstrap.jsp"/>
 </head>
 <body>
-    <h1>SELECT</h1>
-    <form method="POST">
-        <label for="CustomerId">Customer's ID:</label><input id="CustomerId" type="text" name="CustomerId"><br>
+
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <h1>SELECT</h1>
+        <form method="POST">
+            <label for="CustomerId">Customer's ID:</label><input id="CustomerId" type="text" name="CustomerId"><br>
             <button type="submit" name="submit">Enviar</button>
             <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
-    </form>
+        </form>
+    </div>
+</div>
 </body>
 </html>

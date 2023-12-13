@@ -11,17 +11,23 @@
 <head>
     <title>Formulario para introducir nuevo Cliente</title>
     <meta charset="UTF-8">
+    <jsp:include page="include/bootstrap.jsp"/>
 </head>
 <body>
-    <h1>INSERT</h1>
-    <form method="POST">
-        <label for="customerId">Customer's ID:</label><input id="customerId" type="text" name="CustomerId"><br>
-        <label for="CustomerTaxCode">Customer's Tax Code:</label><input id="CustomerTaxCode" type="text" name="CustomerTaxCode"><br>
-        <label for="CustomerBusName">Customer's Bus Name:</label><input id="CustomerBusName" type="text" name="CustomerBusName"><br>
-        <label for="CustomerAddress">Customer's Address:</label><input id="CustomerAddress" type="text" name="CustomerAddress"><br>
-        <label for="CustomerPhone">Customer's Phone:</label><input id="CustomerPhone" type="text" name="CustomerPhone"><br>
-        <button type="submit" name="submit">Enviar</button>
-    </form>
-    <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
+
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <h1>INSERT</h1>
+        <form method="POST">
+            <label for="customerId">Customer's ID:</label><input id="customerId" type="text" name="CustomerId"><br>
+            <label for="CustomerTaxCode">Customer's Tax Code:</label><input id="CustomerTaxCode" type="text" name="CustomerTaxCode"><br>
+            <label for="CustomerBusName">Customer's Bus Name:</label><input id="CustomerBusName" type="text" name="CustomerBusName"><br>
+            <label for="CustomerAddress">Customer's Address:</label><input id="CustomerAddress" type="text" name="CustomerAddress"><br>
+            <label for="CustomerPhone">Customer's Phone:</label><input id="CustomerPhone" type="text" name="CustomerPhone"><br>
+            <button type="submit" name="submit">Enviar</button>
+        </form>
+        <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
+    </div>
+</div>
 </body>
 </html>

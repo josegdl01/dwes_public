@@ -38,6 +38,7 @@ public class CambiarNomServlet extends HttpServlet {
         UsuarioBean user = (UsuarioBean) session.getAttribute("user");
         if (!req.getParameter("newName").isEmpty()) {
             if (usuarioDAO.modUsername(user.getName(), req.getParameter("newName"))) {
+                ((UsuarioBean) session.getAttribute("user")).setName(req.getParameter("newName"));
                 log.info("Cambio de nombre de usuario realizado con éxito");
                 resp.sendRedirect(req.getContextPath() + "/AreaUsuario");
             } else {

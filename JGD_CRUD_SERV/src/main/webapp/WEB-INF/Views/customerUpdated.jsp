@@ -11,14 +11,21 @@
 <html>
 <head>
     <title>Página resultante de editar un Cliente</title>
+    <meta charset="UTF-8">
+    <jsp:include page="include/bootstrap.jsp"/>
 </head>
 <body>
-    <h1>Datos recibidos:</h1>
-    <h1>Customer's ID: ${customerUpdated.cusId} </h1>
-    <h2>Customer's Tax Code: ${customerUpdated.cusTaxCode}</h2>
-    <h2>Customer's Bus Name: ${customerUpdated.cusBusName} </h2>
-    <h2>Customer's Address: ${customerUpdated.cusAddress} </h2>
-    <h2>Customer's Phone: ${customerUpdated.cusPhone} </h2>
-    <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
+
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <h1>Datos recibidos:</h1>
+        <h1>Customer's ID: ${customerUpdated.cusId} </h1>
+        <h2>Customer's Tax Code: ${customerUpdated.cusTaxCode}</h2>
+        <h2>Customer's Bus Name: ${customerUpdated.cusBusName} </h2>
+        <h2>Customer's Address: ${customerUpdated.cusAddress} </h2>
+        <h2>Customer's Phone: ${customerUpdated.cusPhone} </h2>
+        <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
+    </div>
+</div>
 </body>
 </html>

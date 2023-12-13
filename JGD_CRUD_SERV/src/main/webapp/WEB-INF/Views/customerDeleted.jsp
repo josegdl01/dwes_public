@@ -14,12 +14,16 @@
     <title>Página resultante de borrar un Cliente</title>
 </head>
 <body>
-<c:if test="${sessionScope.clienteBorrado != null}">
-    <h1>Borrado el cliente <c:out value="${sessionScope.clienteBorrado}"/></h1>
-</c:if>
-<c:if test="${sessionScope.clienteBorrado == null}">
-    <h1>Este cliente no existe</h1>
-</c:if>
-    <br><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a>
+<div class="container mt-5">
+    <div class="justify-content-center mt-5">
+        <c:if test="${sessionScope.clienteBorrado != null}">
+            <h1>Borrado el cliente <c:out value="${sessionScope.clienteBorrado}"/></h1>
+        </c:if>
+        <c:if test="${sessionScope.clienteBorrado == null}">
+            <h1>Este cliente no existe</h1>
+        </c:if>
+        <br><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a>
+    </div>
+</div>
 </body>
 </html>

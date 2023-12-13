@@ -26,9 +26,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             preparedStatement.setString(1, name);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                usuario = new UsuarioBean(resultSet.getString("usuario"),
+                usuario = new UsuarioBean(resultSet.getString("username"),
                         resultSet.getString("email"),
-                        resultSet.getString("password"),
+                        resultSet.getString("pswd"),
                         resultSet.getString("role"));
             }
         } catch (SQLException s) {

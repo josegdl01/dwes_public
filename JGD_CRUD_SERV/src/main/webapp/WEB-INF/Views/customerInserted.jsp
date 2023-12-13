@@ -12,26 +12,32 @@
 <html>
 <head>
     <title>Página resultante de insertar un Cliente</title>
+    <meta charset="utf-8">
+    <jsp:include page="include/bootstrap.jsp"/>
 </head>
 <body>
-<c:if test="${sessionScope.customerInsert != null}">
-    <h1>Datos recibidos:</h1>
-    <h2>Customer's ID:
-            ${customerInsert.cusId}
-    </h2>
-    <h2>Customer's Tax Code:I ${customerInsert.cusTaxCode}
-    </h2>
-    <h2>Customer's Bus Name: ${customerInsert.cusBusName}
-    </h2>
-    <h2>Customer's Address: ${customerInsert.cusAddress}
-    </h2>
-    <h2>Customer's Phone: ${customerInsert.cusPhone}
-    </h2>
-</c:if>
-<c:if test="${sessionScope.customerInsert == null}">
-    <h1>Este usuario ya se haya en la base de datos</h1>
-</c:if>
-<br>
-<p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <c:if test="${sessionScope.customerInsert != null}">
+            <h1>Datos recibidos:</h1>
+            <h2>Customer's ID:
+                    ${customerInsert.cusId}
+            </h2>
+            <h2>Customer's Tax Code:I ${customerInsert.cusTaxCode}
+            </h2>
+            <h2>Customer's Bus Name: ${customerInsert.cusBusName}
+            </h2>
+            <h2>Customer's Address: ${customerInsert.cusAddress}
+            </h2>
+            <h2>Customer's Phone: ${customerInsert.cusPhone}
+            </h2>
+        </c:if>
+        <c:if test="${sessionScope.customerInsert == null}">
+            <h1>Este usuario ya se haya en la base de datos</h1>
+        </c:if>
+        <br>
+        <p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
+    </div>
+</div>
 </body>
 </html>

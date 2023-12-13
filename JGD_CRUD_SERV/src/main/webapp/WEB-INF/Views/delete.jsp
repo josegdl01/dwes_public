@@ -10,14 +10,21 @@
 <html>
 <head>
     <title>Introducción de un ID para borrar un cliente</title>
+    <meta charset="UTF-8">
+    <jsp:include page="include/bootstrap.jsp"/>
 </head>
 <body>
-    <h1>DELETE</h1>
-    <h2>Introduzca el ID del cliente que desee borrar</h2>
-    <form method="POST">
-        <label for="customerId">Customer's ID</label><input id="customerId" type="text" name="customerId"><br>
-        <button type="submit" name="submit">Borrar</button>
-    </form>
-    <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
+
+<div class="container mt-5">
+    <div class="row justify-content-center mt-5">
+        <h1>DELETE</h1>
+        <h2>Introduzca el ID del cliente que desee borrar</h2>
+        <form method="POST">
+            <label for="customerId">Customer's ID</label><input id="customerId" type="text" name="customerId"><br>
+            <button type="submit" name="submit">Borrar</button>
+        </form>
+        <br><p><a href="${pageContext.request.contextPath}/Menu">Volver al menú</a></p>
+    </div>
+</div>
 </body>
 </html>

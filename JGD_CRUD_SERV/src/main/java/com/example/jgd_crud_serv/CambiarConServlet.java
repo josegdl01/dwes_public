@@ -35,10 +35,13 @@ public class CambiarConServlet extends HttpServlet {
         HttpSession session = req.getSession();
         UsuarioDAO usuarioDAO = new UsuarioDAOImpl();
         UsuarioBean user = (UsuarioBean) session.getAttribute("user");
+        String newPass = PassGen.hashPassword(req.getParameter("confirmPass"));
         if (!req.getParameter("oldPass").isEmpty() && PassGen.checkPassword(req.getParameter("oldPass"), user.getPass())) {
             if (req.getParameter("newPass").equals(req.getParameter("confirmPass"))
                     && !req.getParameter("newPass").isEmpty() && !req.getParameter("confirmPass").isEmpty()) {
-                usuarioDAO.modContrasena(user.getPass(), PassGen.hashPassword(req.getParameter("confirmPass")));
+                usuarioDAO.modContrasena(user.getPass(), newPass);
+                ((UsuarioBean) session.getAttribute("user")).setPass(newPass);
+                log.info("Contraseña cambiada con éxito");
                 resp.sendRedirect(req.getContextPath() + "/AreaUsuario");
             } else {
                 log.error("La contraseña y la confirmación no coinciden");
