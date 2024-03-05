@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lista de Grados</title>
+</head>
+<body>
+<header style="text-align: center">
+    <h1>Lista de Grados</h1>
+</header>
+
+<main style="text-align: center">
+    <div th:if="${grados != null}">
+
+        <table>
+            <thead>
+                <th>Grado</th>
+                <th>Asignaturas</th>
+            </thead>
+
+            <tbody>
+                <tr th:each="grado : ${grados}">
+                    <td th:text="${grado.getNombre()}"></td>
+                    <td><a th:href="@{'/grado/asig?id='+${grado.getId()}}">link</a></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+    <div th:unless="${grados != null}">
+        <p>NO SE HAN ENCONTRADO GRADOS</p>
+    </div>
+</main>
+</body>
+</html>

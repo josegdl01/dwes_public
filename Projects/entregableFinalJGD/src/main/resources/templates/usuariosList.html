@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{includes/bootstrap::head(title='UsuariosList')}">
+    <meta charset="UTF-8">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+<header th:insert="~{includes/navBar :: navBar}"></header>
+<h1>Lista de Usuarios</h1>
+    <table class="table">
+        <thead class="table-header">
+            <th>NOMBRE</th>
+            <th>APELLIDOS</th>
+            <th>USUARIO</th>
+            <th>ROL</th>
+        </thead>
+
+        <tbody class="details-table">
+        <tr th:each="user : ${usuarios}">
+            <td th:text="${user.nombre}"></td>
+            <td th:text="${user.apellidos}"></td>
+            <td th:text="${user.usuario}"></td>
+            <td th:text="${user.role}"></td>
+            <td><button><a th:href="@{'/usuarios/borrar?id=' + ${user.id}}">Borrar</a></button></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="~{includes/bootstrap::head(title='Main')}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Página de Inicio</title>
+</head>
+<body>
+    <header th:insert="~{includes/navBar :: navBar}"></header>
+    <h1>Página de Inicio</h1>
+<div sec:authorize="hasRole('ROLE_USER')">
+    <table class="table">
+        <thead class="table-header">
+        <th>ID</th>
+        <th>NIF</th>
+        <th>NOMBRE</th>
+        <th>APELLIDOS</th>
+        <th>DEPARTAMENTO</th>
+        </thead>
+
+        <tbody class="details-table">
+        <tr th:each="prof : ${profesores}">
+            <td th:text="${prof.id}"></td>
+            <td th:text="${prof.nif}"></td>
+            <td th:text="${prof.nombre}"></td>
+            <td th:text="${prof.apellido1 + ' ' + prof.apellido2}"></td>
+            <td th:text="${prof.departamento.nombre}">
+            <td><button><a th:href="@{'/profesores/asignaturas?id=' +${prof.id}}">Asig</a></button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    <h1>GRADOS:</h1>
+    <table class="table">
+        <thead class="table-header">
+        <th>ID</th>
+        <th>NOMBRE</th>
+        </thead>
+
+        <tbody class="details-table">
+            <tr th:each="grado : ${grados}">
+                <td th:text="${grado.getId()}"></td>
+                <td th:text="${grado.getNombre()}"></td>
+                <td><button><a th:href="@{'/grados/estudiantes?id=' +${grado.id}}">Matriculas</a></button></td>
+            </tr>
+        </tbody>
+    </table>
+<!--    <ul >-->
+<!--        <li><a  th:href="@{'/grados/asig?id=' +${grado.getId()}}"></a></li>-->
+<!--    </ul>-->
+</div>
+</body>
+</html>

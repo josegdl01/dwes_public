@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head th:replace="~{includes/bootstrap::head(title='Main')}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login de la aplicación</title>
+</head>
+<body>
+<div style="text-align: center">
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label>
+                Nombre de usuarios:
+                <input class="form-control" type="text" name="username">
+            </label>
+        </div>
+        <br>
+        <div >
+            <label class="form-group">
+                Contraseña:
+                <input class="form-control" type="password" name="password">
+            </label>
+        </div>
+        <br>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+    </form>
+    <p><a th:href="@{/register}">¿No tienes cuenta? Regístrate</a></p>
+</div>
+</body>
+</html>

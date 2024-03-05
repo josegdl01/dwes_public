@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de registro</title>
+</head>
+<body>
+    <form th:action="@{/formUser}" th:object="${user}" method="post">
+        <div>
+            <label> Usuario:
+                <input th:field="*{usuario}" name="usuario" type="text" required>
+            </label>
+        </div>
+        <div>
+            <label> Nombre:
+                <input th:field="*{nombre}" name="nombre" type="text" required>
+            </label>
+        </div>
+        <div>
+            <label> Apellidos:
+                <input th:field="*{apellidos}" name="apellidos" type="text" required>
+            </label>
+        </div>
+        <div>
+            <label> Contraseña:
+                <input th:field="*{password}" name="password" type="password" required>
+            </label>
+        </div>
+        <div>
+            <label> Email:
+                <input th:field="*{email}" name="email" type="text" required>
+            </label>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>

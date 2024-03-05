@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head th:replace="~{includes/bootstrap::head(title='Main')}">    <meta charset="UTF-8">
+    <title>Formulario de registro</title>
+</head>
+<body>
+<div style="text-align: center">
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <div class="form-group">
+            <label> Usuario:
+                <input class="form-control" th:field="*{usuario}" name="usuario" type="text" required>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Nombre:
+                <input class="form-control" th:field="*{nombre}" name="nombre" type="text" required>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Apellidos:
+                <input class="form-control" th:field="*{apellidos}" name="apellidos" type="text" required>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Contraseña:
+                <input class="form-control" th:field="*{password}" name="password" type="password" required>
+            </label>
+        </div>
+        <div class="form-group">
+            <label> Email:
+                <input class="form-control" th:field="*{email}" name="email" type="text" required>
+            </label>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

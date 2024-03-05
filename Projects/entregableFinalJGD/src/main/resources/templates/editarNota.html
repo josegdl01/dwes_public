@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{includes/bootstrap::head(title='EditarNota')}">
+    <meta charset="UTF-8">
+    <title>Pantalla para editar la nota de un alumno</title>
+</head>
+<body>
+<header th:insert="~{includes/navBar :: navBar}"></header>
+<div th:unless="${als == null}" style="text-align: center">
+    <h1>Asignatura: <span th:text="${als.asignatura.nombre}"></span></h1>
+    <h1>Alumno: <span th:text="${als.alumno.nombre}"></span></h1>
+    <form method="post" th:action="@{/estudiantes/editarnota}">
+        <label><h3>Nota:</h3></label> <br>
+        <input class="form-control" type="number" name="nota" th:value="${als.nota}">
+        <input type="number" name="idAl" th:value="${als.alumno.id}" style="visibility: hidden">
+        <input type="number" name="idAs" th:value="${als.asignatura.id}" style="visibility: hidden"><br>
+        <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
+</div>
+<div th:if="${als == null}">
+    <h1>NO SE HAN RECIBIDO VALORES</h1>
+</div>
+</body>
+</html>

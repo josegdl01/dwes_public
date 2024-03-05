@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{includes/bootstrap::head(title='GradosMat')}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:insert="~{includes/navBar :: navBar}"></header>
+    <h1>Lista de matrículas de: <span th:text="${grado}"></span></h1>
+    <table class="table">
+        <thead class="table-header">
+            <th>Asignatura</th>
+            <th>Alumno</th>
+            <th>Nota</th>
+        </thead>
+
+        <tbody class="details-table">
+            <tr th:each="als : ${alsig}">
+                <td th:text="${als.asignatura.nombre}"></td>
+                <td th:text="${als.alumno.nombre}"></td>
+                <td th:text="${als.nota}"></td>
+                <td><a th:href="@{'/estudiantes/editarnota?id=' + ${als.alumno.id} +'&as=' +${als.asignatura.id}}">Editar Nota</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

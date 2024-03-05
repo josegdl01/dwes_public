@@ -1,0 +1,22 @@
+2023-10-05 10:31:54 INFO  Main:10 - Logger antes de llamar a ningún método.
+2023-10-05 10:31:54 INFO  Main:10 - Iniciando sumar
+2023-10-05 10:31:54 INFO  Main:12 - Error
+2023-10-05 10:31:54 INFO  Main:13 - Logger antes de llamar a restar.
+2023-10-05 10:31:54 INFO  Main:17 - Iniciando restar
+2023-10-05 10:31:54 INFO  Main:19 - Resta realizada con éxito
+2023-10-05 10:31:54 INFO  Main:16 - Logger al acabar.
+2023-10-05 10:49:11 INFO  Main:10 - Logger antes de llamar a ningún método.
+2023-10-05 10:49:11 INFO  Main:10 - Iniciando sumar
+2023-10-05 10:49:11 WARN  Main:12 - Error
+2023-10-05 10:49:11 INFO  Main:13 - Logger antes de llamar a restar.
+2023-10-05 10:49:11 INFO  Main:17 - Iniciando restar
+2023-10-05 10:49:11 INFO  Main:19 - Resta realizada con éxito
+2023-10-05 10:49:11 INFO  Main:16 - Logger al acabar.
+2023-10-05 10:49:37 INFO  Main:10 - Logger antes de llamar a ningún método.
+2023-10-05 10:49:37 INFO  Main:10 - Iniciando sumar
+2023-10-05 10:49:37 ERROR Main:12 - Error
+2023-10-05 10:49:37 INFO  Main:13 - Logger antes de llamar a restar.
+2023-10-05 10:49:37 INFO  Main:17 - Iniciando restar
+2023-10-05 10:49:37 INFO  Main:19 - Resta realizada con éxito
+2023-10-05 10:49:37 INFO  Main:16 - Logger al acabar.
+2023-10-05 10:51:20 ERROR Main:12 - Error

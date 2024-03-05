@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario simple para añadir pokemons</title>
+</head>
+<body>
+<div th:if="${poke.nombre == null}">
+    <form th:action="@{/forms/formPokemon}" th:object="${poke}" method="post">
+        <label for="nombre">
+            Introduzca el nombre
+            <input id="nombre" th:field="*{nombre}">
+        </label><br>
+
+        <label for="descripion">
+            Introduzca la descripion
+            <input id="descripion" th:field="*{descripcion}">
+        </label><br>
+
+        <label for="imagen">
+            Introduzca la imagen
+            <input id="imagen" th:field="*{imagen}">
+        </label><br>
+
+        <label for="categoria">
+            Introduzca la categoria
+            <input id="categoria" th:field="*{categoria}">
+        </label>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<div th:unless="${poke.nombre == null}">
+    <h1><span th:text="${poke.nombre}"></span> ha sido añadido con éxito</h1>
+</div>
+</body>
+</html>

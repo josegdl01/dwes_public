@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{includes/bootstrap::head(title='ProfAsig')}">
+    <meta charset="UTF-8">
+    <title>Lista de asignaturas por profesor</title>
+</head>
+<body>
+<header th:insert="~{includes/navBar :: navBar}"></header>
+<h1>Lista de asignaturas de: <span th:text="${nombre}"></span></h1>
+    <table class="table">
+        <thead class="table-header">
+            <th>ID</th>
+            <th>Asignatura</th>
+            <th>Curso</th>
+            <th>Cuatrimestre</th>
+            <th>Créditos</th>
+            <th>Tipo</th>
+        </thead>
+
+        <tbody class="details-table">
+            <tr th:each="asig: ${asigs}">
+                <td th:text="${asig.id}"></td>
+                <td th:text="${asig.nombre}"></td>
+                <td th:text="${asig.curso}"></td>
+                <td th:text="${asig.cuatrimestre}"></td>
+                <td th:text="${asig.creditos}"></td>
+                <td th:text="${asig.tipo}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

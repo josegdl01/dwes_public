@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario</title>
+</head>
+<body>
+<header style="text-align: center">
+    <h1>Formulario de entrada de datos</h1>
+</header>
+<main style="text-align: center">
+    <div th:if="${profesor.getNombre() ==  null}">
+        <form th:action="@{/formTeacher}" th:object="profesor" method="post">
+            <div>
+                <label>Nombre:
+                </label>
+                <input type="text" name="nombre" th:field="*{nombre}">
+            </div>
+            <div>
+                <label> Primer apellido:
+                </label>
+                <input type="text" name="apellido1" th:field="*{apellido1}">
+            </div>
+            <div>
+                <label> Segundo apellido:
+                </label>
+                <input type="text" name="apellido2" th:field="*{apellido2}">
+            </div>
+            <div>
+                <label> Ciudad:
+                </label>
+                <input type="text" name="ciudad" th:field="*{ciudad}">
+            </div>
+            <div>
+                <label> Dirección:
+                </label>
+                <input type="text" name="direccion" th:field="*{direccion}">
+            </div>
+            <div>
+                <label> Teléfono:
+                </label>
+                <input type="text" name="telefono" th:field="*{telefono}">
+            </div>
+            <div>
+                <label> Fecha de Nacimiento:
+                </label>
+                <input type="date" name="fechaNacimiento" th:field="*{fechaNacimiento}">
+            </div>
+            <div>
+                <label>Sexo:</label>
+                <input type="radio" value="hombre" th:field="*{sexo}">
+                <span>Hombre</span>
+                <input type="radio" value="mujer" th:field="*{sexo}">
+                <span>Mujer</span>
+            </div>
+            <div>
+                <label> Departamento:
+                </label>
+                <select>
+                    <option th:each=""></option>
+                </select>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <div th:unless="${profesor.getNombre() == null}">
+        <h2>Profesor añadido:</h2>
+        <h3>Nombre: <span th:text="${profesor.getNombre()}"></span></h3>
+        <h3>Apellido 1: <span th:text="${profesor.getApellido1()}"></span></h3>
+        <h3>Apellido 2:<span th:text="${profesor.getApellido2()}"></span></h3>
+        <h3>NIF: <span th:text="${profesor.getNif()}"></span></h3>
+        <h3>Ciudad: <span th:text="${profesor.getCiudad()}"></span></h3>
+        <h3>Dirección: <span th:text="${profesor.getDireccion()}"></span></h3>
+        <h3>Teléfono: <span th:text="${profesor.getTelefono()}"></span></h3>
+        <h3>Fecha de nacimiento: <span th:text="${profesor.getFechaNacimiento().toString()}"></span></h3>
+        <h3>Sexo: <span th:text="${profesor.getSexo()}"></span></h3>
+        <h3>Departamento: <span th:text="${profesor.getDepartamento().getNombre()}"></span></h3>
+    </div>
+</main>
+</body>
+</html>
